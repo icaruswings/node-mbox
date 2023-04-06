@@ -6,31 +6,42 @@
     "test": "mocha -R spec test/"
   },
   "author": {
-    "name": "Robert Klep",
-    "email": "robert.klep@gmail.com"
+    "name": "Pavel Procházka",
+    "email": "pavel.prochazka@spongedata.cz"
   },
+  "contributors": [
+    {
+      "name": "Robert Klep",
+      "email": "robert.klep@gmail.com"
+    },
+    {
+      "name": "Daniel Švub",
+      "email": "daniel.svub@spongedata.cz"
+    }
+  ],
   "keywords": [
     "e-mail",
     "mbox"
   ],
   "main": "./src/mbox.js",
   "bugs": {
-    "email": "robert.klep+node-mbox@gmail.com",
-    "url": "https://github.com/robertklep/node-mbox/issues"
+    "email": "info@spongedata.cz",
+    "url": "https://github.com/SpongeData-cz/node-mbox/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/robertklep/node-mbox.git"
+    "url": "git://github.com/SpongeData-cz/node-mbox.git"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^8.2.1"
+    "mocha": "^10.2.0",
+    "mailparser": "^3.6.4"
   },
   "dependencies": {
     "line-stream": "^1.0.0"
   },
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=14.0.0"
   }
 }
