@@ -25,16 +25,14 @@ class Mbox extends Transform {
    */
   constructor(opts) {
     super();
-    this.opts = opts || {includeMboxHeader: false};
+    this.opts = opts || { includeMboxHeader: false };
     this.firstLine = true;
     this.message = [];
     this.messageCount = 0;
-
-    this.lineSplitter = split('\n');
   }
 
   /* data as line from line-stream expected */
-  _transform(line, encoding, callback) {
+  _transform(line, _, callback) {
     // Check for the `mbox` "post mark" (`From `).
     let hasPostmark = line[0] === POSTMARK[0] &&
                       line[1] === POSTMARK[1] &&
@@ -47,20 +45,19 @@ class Mbox extends Transform {
       this.destroy(new Error('NOT_AN_MBOX_FILE'));
       return;
     } else if (hasPostmark) {
-      if( !this.firstLine ) {
-        this.push( Buffer.concat(this.message) );
+      if (!this.firstLine) {
+        this.push(Buffer.concat(this.message));
         this.messageCount++;
       }
 
       this.message = [];
 
-      if( this.opts.includeMboxHeader ) {
+      if (this.opts.includeMboxHeader) {
         this.message.push(line);
       }
 
       callback();
-    }
-    else {
+    } else {
       this.message.push(line);
       callback();
     }
@@ -69,7 +66,7 @@ class Mbox extends Transform {
   }
 
   _flush(cb) {
-    if( this.message.length > 0){
+    if (this.message.length > 0) {
       this.push(Buffer.concat(this.message));
     }
 
