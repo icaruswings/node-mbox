@@ -2,6 +2,7 @@
   "name": "node-mbox",
   "version": "2.0.0",
   "description": "mbox parser for Node",
+  "types": "index.d.ts",
   "scripts": {
     "test": "mocha -R spec test/"
   },
